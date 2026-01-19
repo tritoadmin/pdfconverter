@@ -1,5 +1,7 @@
 package kr.co.trito.pdf.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,10 +20,19 @@ public class FileConvertController {
     @Autowired
     private PdfConvertService service;
 
-    @RequestMapping(value="/pdf.do", method=RequestMethod.POST)
+    @RequestMapping(value="/file2pdf.do", method=RequestMethod.POST)
     @ResponseBody
     public String convert(@RequestParam("file") MultipartFile file) throws Exception {
-        JSONObject result = service.convert(file);
+        JSONObject result = service.convertFile(file);
         return result.toString();
+    }
+
+    @RequestMapping(value="/param2pdf.do", method=RequestMethod.POST, produces="application/json; charset=UTF-8")
+    @ResponseBody
+    public String convert(@RequestParam Map<String,Object> params) throws Exception {
+
+    	JSONObject result = service.convertParam(params);
+
+    	return result.toString();
     }
 }
