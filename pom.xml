@@ -57,21 +57,21 @@
 			<artifactId>cells</artifactId>
 			<version>17.9</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/aspose-cells-17.9.jar</systemPath>
+			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/aspose.cells.17.1.0.jar</systemPath>
 		</dependency>
         <dependency>
 			<groupId>aspose</groupId>
 			<artifactId>slides</artifactId>
 			<version>17.9</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/aspose-slides-17.9-jdk16.jar</systemPath>
+			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/aspose.slides.16.12.0.jar</systemPath>
 		</dependency>
         <dependency>
 			<groupId>aspose</groupId>
 			<artifactId>words</artifactId>
 			<version>17.9</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/aspose-words-17.9-jdk16.jar</systemPath>
+			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/aspose.words.16.11.0.jar</systemPath>
 		</dependency>
 
 
