@@ -94,6 +94,7 @@ public class PdfConvertService {
         String fileName = FileCommonUtil.getFileName(name);
         String ext 		= FileCommonUtil.getExtension(name);
         String saveName = FileCommonUtil.generateUniqueFileName(name);
+        String saveFileName = FileCommonUtil.generateUniqueFileName(saveName);
 
     	File dir = new File(BASE_DIR + "\\" + gbn );
 
@@ -104,7 +105,7 @@ public class PdfConvertService {
     	File src = new File(BASE_DIR + "\\" + gbn + "\\" + saveName);
     	file.transferTo(src);
 
-    	File pdf = new File(BASE_DIR + "\\" + gbn + "\\" + fileName + ".pdf");
+    	File pdf = new File(BASE_DIR + "\\" + gbn + "\\" + saveFileName + ".pdf");
 
     	if ("xls".equals(ext) || "xlsx".equals(ext)) {
     		ConverterUtil.excelConvert(src, pdf);
