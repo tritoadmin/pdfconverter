@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.trito.pdf.service.PdfConvertService;
+import kr.co.trito.pdf.util.HmacTokenUtil;
 import net.sf.json.JSONObject;
 
 @Controller
@@ -57,5 +58,25 @@ public class FileConvertController {
     public String convert3(@RequestParam("file") MultipartFile file, @RequestParam("gbn") String gbn) throws Exception {
     	JSONObject result = service.convertFileWithParam(file, gbn);
     	return result.toString();
+    }
+
+    /**
+     *
+     * @param params
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value="/fileWithparam2pdf.do", method=RequestMethod.GET)
+    @ResponseBody
+    public String generateToken(@RequestParam("userId") String userId) throws Exception {
+
+    	String data = userId+"&expire=1700000000";
+    	String token = HmacTokenUtil.generate(data);
+
+    	JSONObject json = new JSONObject();
+    	json.put("token", token);
+
+    	return json.toString();
+
     }
 }
