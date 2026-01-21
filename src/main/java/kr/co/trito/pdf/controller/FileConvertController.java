@@ -20,6 +20,12 @@ public class FileConvertController {
     @Autowired
     private PdfConvertService service;
 
+    /**
+     *
+     * @param file
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value="/file2pdf.do", method=RequestMethod.POST)
     @ResponseBody
     public String convert(@RequestParam("file") MultipartFile file) throws Exception {
@@ -27,12 +33,29 @@ public class FileConvertController {
         return result.toString();
     }
 
+    /**
+     *
+     * @param params
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value="/param2pdf.do", method=RequestMethod.POST, produces="application/json; charset=UTF-8")
     @ResponseBody
-    public String convert(@RequestParam Map<String,Object> params) throws Exception {
-
+    public String convert2(@RequestParam Map<String,Object> params) throws Exception {
     	JSONObject result = service.convertParam(params);
+    	return result.toString();
+    }
 
+    /**
+     *
+     * @param params
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value="/fileWithparam2pdf.do", method=RequestMethod.POST, produces="application/json; charset=UTF-8")
+    @ResponseBody
+    public String convert3(@RequestParam("file") MultipartFile file, @RequestParam Map<String,Object> params) throws Exception {
+    	JSONObject result = service.convertFileWithParam(file, params);
     	return result.toString();
     }
 }
