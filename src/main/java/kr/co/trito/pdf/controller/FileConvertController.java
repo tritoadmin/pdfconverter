@@ -70,10 +70,10 @@ public class FileConvertController {
     	}
 
 
+    	boolean isValidToken = true;
     	// 요청 시 검증
     	if (!EncryptTokenValidator.validate(token)) {
-    	    response.sendError(401);
-    	    return null;
+    		isValidToken = false;
     	}
 
 
@@ -82,6 +82,7 @@ public class FileConvertController {
     	JSONObject result = service.convertFileWithParam(file, gbn);
     	result.put("token", token);
     	result.put("userId", userId);
+    	result.put("isValidToken", isValidToken);
 
     	return result.toString();
     }
