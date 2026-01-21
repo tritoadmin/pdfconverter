@@ -66,7 +66,7 @@ public class FileConvertController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value="/fileWithparam2pdf.do", method=RequestMethod.GET)
+    @RequestMapping(value="/token.do", method=RequestMethod.GET)
     @ResponseBody
     public String generateToken(@RequestParam("userId") String userId) throws Exception {
 
