@@ -6,7 +6,7 @@ import javax.crypto.spec.SecretKeySpec;
 public class HmacTokenUtil {
 
     private static final String HMAC_ALGO = "HmacSHA256";
-    private static final String SECRET_KEY = "trito-pdf-converter";
+    private static final String SECRET_KEY = "tritopdfconvert";
 
     public static String generate(String data) throws Exception {
 
