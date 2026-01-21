@@ -88,9 +88,7 @@ public class PdfConvertService {
     	return json;
     }
 
-    public JSONObject convertFileWithParam(MultipartFile file, Map<String,Object> params) throws Exception {
-
-    	String gbn 		= (String) params.get("gbn");
+    public JSONObject convertFileWithParam(MultipartFile file, String gbn) throws Exception {
 
     	String name 	= file.getOriginalFilename();
         String fileName = FileCommonUtil.getFileName(name);

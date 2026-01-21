@@ -54,8 +54,8 @@ public class FileConvertController {
      */
     @RequestMapping(value="/fileWithparam2pdf.do", method=RequestMethod.POST, produces="application/json; charset=UTF-8")
     @ResponseBody
-    public String convert3(@RequestParam("file") MultipartFile file, @RequestParam Map<String,Object> params) throws Exception {
-    	JSONObject result = service.convertFileWithParam(file, params);
+    public String convert3(@RequestParam("file") MultipartFile file, @RequestParam("gbn") String gbn) throws Exception {
+    	JSONObject result = service.convertFileWithParam(file, gbn);
     	return result.toString();
     }
 }
