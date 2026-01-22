@@ -118,6 +118,8 @@ public class PdfConvertService {
     		throw new RuntimeException("지원하지 않는 형식");
     	}
 
+    	fileName = fileName.substring(0, fileName.indexOf(".")+1);
+
     	JSONObject json = new JSONObject();
     	json.put("gbn"			, gbn);
     	json.put("filePath"		, dir.getAbsolutePath());
