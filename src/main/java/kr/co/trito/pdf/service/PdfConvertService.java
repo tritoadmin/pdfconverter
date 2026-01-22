@@ -122,6 +122,7 @@ public class PdfConvertService {
     	json.put("gbn"			, gbn);
     	json.put("filePath"		, dir.getAbsolutePath());
     	json.put("originalFile"	, name);
+    	json.put("originalFileName"	, fileName);
     	json.put("originalExt"	, ext);
     	json.put("saveFile"	    , saveName);
     	json.put("pdfFile"		, pdf.getPath());
