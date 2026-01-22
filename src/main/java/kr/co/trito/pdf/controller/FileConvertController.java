@@ -74,6 +74,7 @@ public class FileConvertController {
     	// 요청 시 검증
     	if (!EncryptTokenValidator.validate(token)) {
     		isValidToken = false;
+    		response.sendError(HttpServletResponse.SC_FORBIDDEN, "접근 금지");
     	}
 
 
