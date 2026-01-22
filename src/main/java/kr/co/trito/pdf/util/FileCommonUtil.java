@@ -38,9 +38,9 @@ public class FileCommonUtil {
 
     /** UUID 파일명 생성 */
     public static String generateUniqueFileName(String originalName) {
-        String ext = getExtension(originalName);
-        return UUID.randomUUID().toString().replace("-", "")
-                + (ext.length() > 0 ? "." + ext : "");
+//        String ext = getExtension(originalName);
+        return UUID.randomUUID().toString().replace("-", "");
+//                + (ext.length() > 0 ? "." + ext : "");
     }
 
     /* ==============================
