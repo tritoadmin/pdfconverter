@@ -93,7 +93,7 @@ public class PdfConvertService {
     	String name 	= file.getOriginalFilename();
         String fileName = FileCommonUtil.getFileName(name);
         String ext 		= FileCommonUtil.getExtension(name);
-        String saveName = FileCommonUtil.generateUniqueFileName(name);
+        String saveName = FileCommonUtil.generateUniqueFileName(fileName);
         String saveFileName = FileCommonUtil.generateUniqueFileName(saveName);
 
     	File dir = new File(BASE_DIR + "\\" + gbn );
