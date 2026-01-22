@@ -60,7 +60,7 @@ public class FileConvertController {
      */
     @RequestMapping(value="/fileWithparam2pdf.do", method=RequestMethod.POST, produces="application/json; charset=UTF-8")
     @ResponseBody
-    public String convert3(@RequestParam("file") MultipartFile file, HttpServletRequest request, HttpServletResponse response, @RequestParam("gbn") String gbn) throws Exception {
+    public String convert3(@RequestParam("file") MultipartFile file, HttpServletRequest request, HttpServletResponse response, @RequestParam Map<String,Object> params) throws Exception {
 
     	String token = "";
     	String auth = request.getHeader("Authorization");
@@ -79,6 +79,8 @@ public class FileConvertController {
 
 
     	String userId = EncryptTokenParser.getUserId(token);
+
+    	String gbn = (String)params.get("gbn");
 
     	JSONObject result = service.convertFileWithParam(file, gbn);
     	result.put("token", token);
