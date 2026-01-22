@@ -105,7 +105,8 @@ public class PdfConvertService {
     	File src = new File(BASE_DIR + "\\" + gbn + "\\" + saveName);
     	file.transferTo(src);
 
-    	File pdf = new File(BASE_DIR + "\\" + gbn + "\\" + saveFileName + ".pdf");
+//    	File pdf = new File(BASE_DIR + "\\" + gbn + "\\" + saveFileName + ".pdf");
+    	File pdf = new File(BASE_DIR + "\\" + gbn + "\\" + saveFileName );
 
     	if ("xls".equals(ext) || "xlsx".equals(ext)) {
     		ConverterUtil.excelConvert(src, pdf);
@@ -121,6 +122,7 @@ public class PdfConvertService {
     	json.put("gbn"			, gbn);
     	json.put("filePath"		, dir.getAbsolutePath());
     	json.put("originalFile"	, name);
+    	json.put("originalExt"	, ext);
     	json.put("saveFile"	    , saveName);
     	json.put("pdfFile"		, pdf.getPath());
     	json.put("size"			, pdf.length());
