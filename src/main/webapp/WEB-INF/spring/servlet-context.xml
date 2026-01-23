@@ -35,5 +35,12 @@
 	    </mvc:interceptor>
 	</mvc:interceptors>
 
+	<bean id="dataSource"
+	      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	    <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+	    <property name="url" value="jdbc:oracle:thin:@www.trito.co.kr:1521:TRITODB"/>
+	    <property name="username" value="trito_dev"/>
+	    <property name="password" value="trito114"/>
+	</bean>
 
 </beans>
