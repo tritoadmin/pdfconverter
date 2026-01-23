@@ -6,8 +6,11 @@ import java.sql.ResultSet;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Repository;
+
 import kr.co.trito.pdf.vo.ApiKeyInfo;
 
+@Repository
 public class ApiKeyDao {
 
     public ApiKeyInfo findByAccessKey(Connection conn, String accessKey)
