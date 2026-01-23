@@ -29,9 +29,9 @@
 
 		<!-- Oracle JDBC Driver -->
 		<dependency>
-		    <groupId>com.oracle.database.jdbc</groupId>
-		    <artifactId>ojdbc11</artifactId>
-		    <version>23.4.0.24.06</version> <!-- Use the appropriate version for your JDK/DB -->
+		   	<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc6</artifactId>
+		   	<version>11.2.0.4</version>
 		</dependency>
 
 		<!-- Spring JDBC for DataSource support -->
