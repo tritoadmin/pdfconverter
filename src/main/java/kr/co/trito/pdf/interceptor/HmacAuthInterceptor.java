@@ -22,6 +22,7 @@ public class HmacAuthInterceptor implements HandlerInterceptor {
     @Autowired
     private ApiKeyDao apiKeyDao;
 
+
     @Autowired
     private DataSource dataSource;
 
