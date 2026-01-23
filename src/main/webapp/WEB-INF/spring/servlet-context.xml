@@ -28,4 +28,12 @@
 
     <context:property-placeholder location="classpath:/config.properties"/>
 
+    <mvc:interceptors>
+	    <mvc:interceptor>
+	        <mvc:mapping path="/convert/**"/>
+	        <bean class="kr.co.trito.pdf.interceptor.HmacAuthInterceptor"/>
+	    </mvc:interceptor>
+	</mvc:interceptors>
+
+
 </beans>

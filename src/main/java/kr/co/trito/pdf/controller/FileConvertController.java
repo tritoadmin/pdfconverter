@@ -62,30 +62,30 @@ public class FileConvertController {
     @ResponseBody
     public String convert3(@RequestParam("file") MultipartFile file, HttpServletRequest request, HttpServletResponse response, @RequestParam Map<String,Object> params) throws Exception {
 
-    	String token = "";
-    	String auth = request.getHeader("Authorization");
+//    	String token = "";
+//    	String auth = request.getHeader("Authorization");
+//
+//    	if (auth != null && auth.startsWith("Bearer ")) {
+//    	    token = auth.substring(7);
+//    	}
+//
+//
+//    	boolean isValidToken = true;
+//    	// 요청 시 검증
+//    	if (!EncryptTokenValidator.validate(token)) {
+//    		isValidToken = false;
+//    		response.sendError(HttpServletResponse.SC_FORBIDDEN, "접근 금지");
+//    	}
 
-    	if (auth != null && auth.startsWith("Bearer ")) {
-    	    token = auth.substring(7);
-    	}
 
-
-    	boolean isValidToken = true;
-    	// 요청 시 검증
-    	if (!EncryptTokenValidator.validate(token)) {
-    		isValidToken = false;
-    		response.sendError(HttpServletResponse.SC_FORBIDDEN, "접근 금지");
-    	}
-
-
-    	String userId = EncryptTokenParser.getUserId(token);
+//    	String userId = EncryptTokenParser.getUserId(token);
 
     	String gbn = (String)params.get("gbn");
 
     	JSONObject result = service.convertFileWithParam(file, gbn);
-    	result.put("token", token);
-    	result.put("userId", userId);
-    	result.put("isValidToken", isValidToken);
+//    	result.put("token", token);
+//    	result.put("userId", userId);
+//    	result.put("isValidToken", isValidToken);
 
     	return result.toString();
     }
@@ -108,4 +108,13 @@ public class FileConvertController {
     	return json.toString();
 
     }
+
+
+
+    @RequestMapping("/hello")
+    @ResponseBody
+    public String hello() {
+        return "Java 1.6 HMAC 인증 성공";
+    }
+
 }
