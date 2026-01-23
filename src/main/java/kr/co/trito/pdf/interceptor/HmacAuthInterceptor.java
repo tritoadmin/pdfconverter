@@ -17,7 +17,7 @@ import kr.co.trito.pdf.vo.ApiKeyInfo;
 
 public class HmacAuthInterceptor implements HandlerInterceptor {
 
-    private static final long EXPIRE_TIME = 5 * 60 * 1000; // 5분
+    private static final long EXPIRE_TIME = 60 * 60 * 1000; // 60분
 
     @Autowired
     private ApiKeyDao apiKeyDao;
