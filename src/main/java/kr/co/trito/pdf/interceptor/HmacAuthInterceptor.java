@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,7 +23,6 @@ public class HmacAuthInterceptor implements HandlerInterceptor {
     private ApiKeyDao apiKeyDao;
 
     @Autowired
-    @Qualifier(value="dataSource")
     private DataSource dataSource;
 
 
