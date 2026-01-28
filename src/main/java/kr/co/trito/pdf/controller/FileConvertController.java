@@ -17,6 +17,7 @@ import kr.co.trito.pdf.service.PdfConvertService;
 import kr.co.trito.pdf.util.EncryptTokenGenerator;
 import kr.co.trito.pdf.util.EncryptTokenParser;
 import kr.co.trito.pdf.util.EncryptTokenValidator;
+import kr.co.trito.pdf.util.HmacUtil;
 import net.sf.json.JSONObject;
 
 @Controller
@@ -104,6 +105,31 @@ public class FileConvertController {
 
     	JSONObject json = new JSONObject();
     	json.put("token", token);
+
+    	return json.toString();
+
+    }
+
+    /**
+     *
+     * @param params
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value="/authKey.do", method=RequestMethod.GET)
+    @ResponseBody
+    public String generateAuthKey(@RequestParam("accessKey") String accessKey, @RequestParam("secretKey") String userId, @RequestParam("userId") String secretKey, @RequestParam("apiUrl") String apiUrl) throws Exception {
+
+		String timestamp = String.valueOf(System.currentTimeMillis());
+
+		String data = "GET\n" + apiUrl + "\n" + timestamp;
+		String signature = HmacUtil.generate(data, secretKey);
+
+    	JSONObject json = new JSONObject();
+    	json.put("accessKey", accessKey);
+    	json.put("secretKey", secretKey);
+    	json.put("timestamp", timestamp);
+    	json.put("signature", signature);
 
     	return json.toString();
 

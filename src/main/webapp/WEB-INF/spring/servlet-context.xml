@@ -66,6 +66,7 @@
             <mvc:exclude-mapping path="/images/**"/>
             <mvc:exclude-mapping path="/login"/>
             <mvc:exclude-mapping path="/convert/token.do"/>
+            <mvc:exclude-mapping path="/convert/authKey.do"/>
 
             <!-- 2-3. 인터셉터 빈 연결 -->
             <ref bean="hmacInterceptor"/>
