@@ -118,7 +118,7 @@ public class FileConvertController {
      */
     @RequestMapping(value="/authKey.do", method=RequestMethod.GET)
     @ResponseBody
-    public String generateAuthKey(@RequestParam("accessKey") String accessKey, @RequestParam("secretKey") String userId, @RequestParam("userId") String secretKey, @RequestParam("apiUrl") String apiUrl) throws Exception {
+    public String generateAuthKey(@RequestParam("accessKey") String accessKey, @RequestParam("secretKey") String secretKey, @RequestParam("apiUrl") String apiUrl) throws Exception {
 
 		String timestamp = String.valueOf(System.currentTimeMillis());
 
