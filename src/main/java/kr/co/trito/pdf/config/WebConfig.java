@@ -29,7 +29,7 @@ public class WebConfig implements WebMvcConfigurer {
     // Interceptor에서 제외되는 URL 주소
     private static final String[] EXCLUDE_PATHS = {
             "/",
-            "/**/token.do"
+            "/convert/token.do"
     };
 
     @Override
