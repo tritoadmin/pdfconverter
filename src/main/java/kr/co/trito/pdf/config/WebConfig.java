@@ -25,8 +25,6 @@ import kr.co.trito.pdf.interceptor.HmacAuthInterceptor;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-	@Autowired
-	HmacAuthInterceptor hmacAuthInterceptor;
 
     // Interceptor에서 제외되는 URL 주소
     private static final String[] EXCLUDE_PATHS = {
@@ -36,7 +34,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors (InterceptorRegistry registry) {
-        registry.addInterceptor(hmacAuthInterceptor)
+        registry.addInterceptor(new HmacAuthInterceptor())
                 .excludePathPatterns(EXCLUDE_PATHS) //인터셉터에 포함되지 않음
                 .addPathPatterns("/convert/**") //인터셉터에 포함됨
         ;
