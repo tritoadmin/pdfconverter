@@ -29,7 +29,7 @@ public class WebConfig implements WebMvcConfigurer {
         // 인터셉터 등록
         registry.addInterceptor(new HmacAuthInterceptor())
                 .addPathPatterns("/**")  // 모든 경로에 대해 인터셉터를 적용
-                .excludePathPatterns("/token.do","/login"); // 특정 경로는 제외
+                .excludePathPatterns("/convert/token.do","/hello","/login"); // 특정 경로는 제외
     }
 
 	@Override
