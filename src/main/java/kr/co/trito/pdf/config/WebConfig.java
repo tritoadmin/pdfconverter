@@ -2,6 +2,7 @@ package kr.co.trito.pdf.config;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -24,12 +25,21 @@ import kr.co.trito.pdf.interceptor.HmacAuthInterceptor;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
+	@Autowired
+	HmacAuthInterceptor hmacAuthInterceptor;
+
+    // Interceptor에서 제외되는 URL 주소
+    private static final String[] EXCLUDE_PATHS = {
+            "/",
+            "/**/tokens.do"
+    };
+
     @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        // 인터셉터 등록
-        registry.addInterceptor(new HmacAuthInterceptor())
-                .addPathPatterns("/**")  // 모든 경로에 대해 인터셉터를 적용
-                .excludePathPatterns("/convert/token.do"); // 특정 경로는 제외
+    public void addInterceptors (InterceptorRegistry registry) {
+        registry.addInterceptor(hmacAuthInterceptor)
+                .excludePathPatterns(EXCLUDE_PATHS) //인터셉터에 포함되지 않음
+                .addPathPatterns("/convert/**") //인터셉터에 포함됨
+        ;
     }
 
 	@Override
