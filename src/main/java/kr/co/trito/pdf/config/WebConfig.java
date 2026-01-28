@@ -35,8 +35,8 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors (InterceptorRegistry registry) {
         registry.addInterceptor(new HmacAuthInterceptor())
+		        .addPathPatterns("/convert/**") //인터셉터에 포함됨
                 .excludePathPatterns(EXCLUDE_PATHS) //인터셉터에 포함되지 않음
-                .addPathPatterns("/convert/**") //인터셉터에 포함됨
         ;
     }
 
