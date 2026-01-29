@@ -135,6 +135,8 @@ public class FileConvertController {
 
     		json.put("accessKey", accessKey);
     		json.put("secretKey", secretKey);
+    		json.put("apiMethod", apiMethod);
+    		json.put("apiUrl"   , apiUrl);
     		json.put("timestamp", timestamp);
     		json.put("signature", signature);
     		json.put("status"   , "S");
