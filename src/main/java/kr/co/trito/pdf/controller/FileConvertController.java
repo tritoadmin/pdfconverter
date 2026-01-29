@@ -118,18 +118,28 @@ public class FileConvertController {
      */
     @RequestMapping(value="/authKey.do", method=RequestMethod.GET)
     @ResponseBody
-    public String generateAuthKey(@RequestParam("accessKey") String accessKey, @RequestParam("secretKey") String secretKey, @RequestParam("apiUrl") String apiUrl) throws Exception {
-
-		String timestamp = String.valueOf(System.currentTimeMillis());
-
-		String data = "GET\n" + apiUrl + "\n" + timestamp;
-		String signature = HmacUtil.generate(data, secretKey);
+    public String generateAuthKey(@RequestParam("accessKey") String accessKey, @RequestParam("secretKey") String secretKey, @RequestParam("apiMethod") String apiMethod, @RequestParam("apiUrl") String apiUrl) throws Exception {
 
     	JSONObject json = new JSONObject();
-    	json.put("accessKey", accessKey);
-    	json.put("secretKey", secretKey);
-    	json.put("timestamp", timestamp);
-    	json.put("signature", signature);
+
+    	if(accessKey == null || secretKey == null || apiMethod == null || apiUrl == null) {
+
+    		json.put("status", "");
+
+    	} else {
+
+    		String timestamp = String.valueOf(System.currentTimeMillis());
+
+    		String data = apiMethod.toUpperCase() + "\n" + apiUrl + "\n" + timestamp;
+    		String signature = HmacUtil.generate(data, secretKey);
+
+    		json.put("accessKey", accessKey);
+    		json.put("secretKey", secretKey);
+    		json.put("timestamp", timestamp);
+    		json.put("signature", signature);
+    		json.put("status"   , "S");
+    	}
+
 
     	return json.toString();
 
