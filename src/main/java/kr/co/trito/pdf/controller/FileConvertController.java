@@ -15,8 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.trito.pdf.service.PdfConvertService;
 import kr.co.trito.pdf.util.EncryptTokenGenerator;
-import kr.co.trito.pdf.util.EncryptTokenParser;
-import kr.co.trito.pdf.util.EncryptTokenValidator;
 import kr.co.trito.pdf.util.HmacUtil;
 import net.sf.json.JSONObject;
 
@@ -130,7 +128,8 @@ public class FileConvertController {
 
     		String timestamp = String.valueOf(System.currentTimeMillis());
 
-    		String data = apiMethod.toUpperCase() + "\n" + apiUrl + "\n" + timestamp;
+//    		String data = apiMethod.toUpperCase() + "\n" + apiUrl + "\n" + timestamp;
+    		String data = apiMethod.toUpperCase() + "\n" + apiUrl ;
     		String signature = HmacUtil.generate(data, secretKey);
 
     		json.put("accessKey", accessKey);

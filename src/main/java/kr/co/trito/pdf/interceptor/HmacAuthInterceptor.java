@@ -32,27 +32,28 @@ public class HmacAuthInterceptor implements HandlerInterceptor {
                              Object handler) throws Exception {
 
         String accessKey = request.getHeader("X-ACCESS-KEY");
-        String timestamp = request.getHeader("X-TIMESTAMP");
+//        String timestamp = request.getHeader("X-TIMESTAMP");
         String signature = request.getHeader("X-SIGNATURE");
 
-        if (accessKey == null || timestamp == null || signature == null) {
+//        if (accessKey == null || timestamp == null || signature == null) {
+       	if (accessKey == null || signature == null) {
             response.sendError(401, "Missing auth header");
             return false;
         }
 
-        long reqTime;
-        try {
-            reqTime = Long.parseLong(timestamp);
-        } catch (NumberFormatException e) {
-            response.sendError(401, "Invalid timestamp");
-            return false;
-        }
+//        long reqTime;
+//        try {
+//            reqTime = Long.parseLong(timestamp);
+//        } catch (NumberFormatException e) {
+//            response.sendError(401, "Invalid timestamp");
+//            return false;
+//        }
 
-        long now = System.currentTimeMillis();
-        if (Math.abs(now - reqTime) > EXPIRE_TIME) {
-            response.sendError(401, "Request expired");
-            return false;
-        }
+//        long now = System.currentTimeMillis();
+//        if (Math.abs(now - reqTime) > EXPIRE_TIME) {
+//            response.sendError(401, "Request expired");
+//            return false;
+//        }
 
 //        String secretKey = ApiKeyStore.getSecretKey(accessKey);
 //        if (secretKey == null) {
@@ -78,8 +79,9 @@ public class HmacAuthInterceptor implements HandlerInterceptor {
 
 
         String data = request.getMethod() + "\n"
-                    + request.getRequestURI() + "\n"
-                    + timestamp;
+                    + request.getRequestURI()
+//                    + "\n" + timestamp;
+                    ;
 
         String serverSignature = HmacUtil.generate(data, keyInfo.getSecretKey());
 
